@@ -1,0 +1,3 @@
+$ curl -s -S http://localhost:$PORT/Lec01.pdf > downloaded_files/Lec01.pdf
+$ exit
+exit

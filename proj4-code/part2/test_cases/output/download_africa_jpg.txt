@@ -1,0 +1,3 @@
+$ curl -s -S http://localhost:$PORT/africa.jpg > downloaded_files/africa.jpg
+$ exit
+exit

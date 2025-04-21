@@ -1,0 +1,215 @@
+{
+    "name": "Project 04",
+    "tests": [
+        {
+            "name": "Concurrent HTTP Server",
+            "type": "sequence",
+            "description": "Launches HTTP server, then concurrently runs several 'curl' instances to request files, including one non-existent file. Checks that all files are successfully downloaded and match the original versions. Note that you won't be able to pass this test unless your sever supports a minimum number of concurrently active clients.",
+            "tests": [
+                {
+                    "name": "Directory Setup",
+                    "description": "Creates a fresh directory to store files downloaded from the server",
+                    "input_file": "test_cases/input/dir_setup.txt",
+                    "output_file": "test_cases/output/dir_setup.txt"
+                },
+                {
+                    "name": "Concurrent HTTP Server",
+                    "description": "Runs HTTP Server",
+                    "input_file": "test_cases/input/run_server.txt",
+                    "output_file": "test_cases/output/run_server.txt",
+                    "environment": {
+                        "LD_PRELOAD": "./concurrent_open.so"
+                    }
+                },
+                {
+                    "name": "Request quote.txt",
+                    "description": "Requests the file 'quote.txt' from the server",
+                    "output_file": "test_cases/output/download_quote_txt.txt",
+                    "input_file": "test_cases/input/download_quote_txt.txt"
+                },
+                {
+                    "name": "Request headers.html",
+                    "description": "Requests the file 'headers.html' from the server",
+                    "output_file": "test_cases/output/download_headers_html.txt",
+                    "input_file": "test_cases/input/download_headers_html.txt"
+                },
+                {
+                    "name": "Request index.html",
+                    "description": "Requests the file 'index.html' from the server",
+                    "output_file": "test_cases/output/download_index_html.txt",
+                    "input_file": "test_cases/input/download_index_html.txt"
+                },
+                {
+                    "name": "Request courses.txt",
+                    "description": "Requests the file 'courses.txt' from the server",
+                    "output_file": "test_cases/output/download_courses_txt.txt",
+                    "input_file": "test_cases/input/download_courses_txt.txt"
+                },
+                {
+                    "name": "Request mt2_practice.pdf",
+                    "description": "Requests the file 'mt2_practice.pdf' from the server",
+                    "output_file": "test_cases/output/download_mt2_practice_pdf.txt",
+                    "input_file": "test_cases/input/download_mt2_practice_pdf.txt"
+                },
+                {
+                    "name": "Request gatsby.txt",
+                    "description": "Requests the file 'gatsby.txt' from the server",
+                    "output_file": "test_cases/output/download_gatsby_txt.txt",
+                    "input_file": "test_cases/input/download_gatsby_txt.txt"
+                },
+                {
+                    "name": "Request africa.jpg",
+                    "description": "Requests the file 'africa.jpg' from the server",
+                    "output_file": "test_cases/output/download_africa_jpg.txt",
+                    "input_file": "test_cases/input/download_africa_jpg.txt"
+                },
+                {
+                    "name": "Request ocelot.jpg",
+                    "description": "Requests the file 'ocelot.jpg' from the server",
+                    "output_file": "test_cases/output/download_ocelot_jpg.txt",
+                    "input_file": "test_cases/input/download_ocelot_jpg.txt"
+                },
+                {
+                    "name": "Request hard_drive.png",
+                    "description": "Requests the file 'hard_drive.png' from the server",
+                    "output_file": "test_cases/output/download_hard_drive_png.txt",
+                    "input_file": "test_cases/input/download_hard_drive_png.txt"
+                },
+                {
+                    "name": "Request Lec01.pdf",
+                    "description": "Requests the file 'Lec01.pdf' from the server",
+                    "output_file": "test_cases/output/download_lec_01_pdf.txt",
+                    "input_file": "test_cases/input/download_lec_01_pdf.txt"
+                },
+                {
+                    "name": "Check Downloaded Files",
+                    "description": "Compares each file requested and downloaded from the HTTP server to its original version",
+                    "output_file": "test_cases/output/check_files.txt",
+                    "input_file": "test_cases/input/check_files.txt"
+                },
+                {
+                    "name": "Signal HTTP Server",
+                    "description": "Sends SIGINT to HTTP server process, which should cause server to exit",
+                    "input_file": "test_cases/input/signal_server.txt",
+                    "output_file": "test_cases/output/signal_server.txt"
+                }
+            ],
+            "steps": [
+                [
+                    {
+                        "type": "run",
+                        "target": "Directory Setup"
+                    }
+                ],
+                [
+                    {
+                        "type": "start",
+                        "target": "Concurrent HTTP Server"
+                    }
+                ],
+                [
+                    {
+                        "type": "start",
+                        "target": "Request quote.txt"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request headers.html"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request index.html"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request courses.txt"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request mt2_practice.pdf"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request gatsby.txt"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request africa.jpg"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request ocelot.jpg"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request hard_drive.png"
+                    },
+                    {
+                        "type": "start",
+                        "target": "Request Lec01.pdf"
+                    }
+                ],
+                [
+                    {
+                        "type": "finish",
+                        "target": "Request quote.txt"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request headers.html"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request index.html"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request courses.txt"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request mt2_practice.pdf"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request gatsby.txt"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request africa.jpg"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request ocelot.jpg"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request hard_drive.png"
+                    },
+                    {
+                        "type": "finish",
+                        "target": "Request Lec01.pdf"
+                    }
+                ],
+                [
+                    {
+                        "type": "run",
+                        "target": "Signal HTTP Server"
+                    }
+                ],
+                [
+                    {
+                        "type": "finish",
+                        "target": "Concurrent HTTP Server"
+                    }
+                ],
+                [
+                    {
+                        "type": "run",
+                        "target": "Check Downloaded Files"
+                    }
+                ]
+            ]
+        }
+    ]
+}

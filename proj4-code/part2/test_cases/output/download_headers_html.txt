@@ -1,0 +1,3 @@
+$ curl -s -S http://localhost:$PORT/headers.html > downloaded_files/headers.html
+$ exit
+exit

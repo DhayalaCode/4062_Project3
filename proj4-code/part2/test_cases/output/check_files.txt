@@ -1,0 +1,12 @@
+$ diff -q downloaded_files/quote.txt server_files/quote.txt
+$ diff -q downloaded_files/headers.html server_files/headers.html
+$ diff -q downloaded_files/index.html server_files/index.html
+$ diff -q downloaded_files/courses.txt server_files/courses.txt
+$ diff -q downloaded_files/courses.txt server_files/courses.txt
+$ diff -q downloaded_files/mt2_practice.pdf server_files/mt2_practice.pdf
+$ diff -q downloaded_files/gatsby.txt server_files/gatsby.txt
+$ diff -q downloaded_files/africa.jpg server_files/africa.jpg
+$ diff -q downloaded_files/hard_drive.png server_files/hard_drive.png
+$ diff -q downloaded_files/Lec01.pdf server_files/Lec01.pdf
+$ exit
+exit

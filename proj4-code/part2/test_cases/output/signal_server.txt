@@ -1,0 +1,3 @@
+$ pkill -INT http_server
+$ exit
+exit
