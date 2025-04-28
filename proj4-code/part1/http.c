@@ -139,6 +139,7 @@ int write_http_response(int fd, const char *resource_path) {
             "Content-Length: %ld\r\n"
             "Connection: close\r\n"
             "\r\n", mime_type, (long)file_stat.st_size);
+    // snprintf(headers, BUFSIZE, "HTTP TEST: \r\n", mime_type, (long)file_stat.st_size);
 
     if (write(fd, headers, strlen(headers)) < 0) {
         perror("write headers");
