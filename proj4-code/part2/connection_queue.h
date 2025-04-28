@@ -8,12 +8,14 @@
 // Struct representing a thread-safe queue data structure
 // The queue stores file descriptors of active client TCP sockets
 typedef struct {
-    int client_fds[CAPACITY];
-    int length;
-    int read_idx;
-    int write_idx;
-    int shutdown;
-    // TODO Add necessary thread synchronization primitives to this struct
+    int fds[CAPACITY];
+    int head;
+    int tail;
+    int count;
+    int shutting_down;
+    pthread_mutex_t mtx;
+    pthread_cond_t nonempty;
+    pthread_cond_t nonfull;
 } connection_queue_t;
 
 /*
